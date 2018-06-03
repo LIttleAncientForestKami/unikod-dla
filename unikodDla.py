@@ -4,9 +4,12 @@ try:
 except ImportError:
     from bs4 import BeautifulSoup
 import requests
+import sys
 
-TERM="nuclear"
+TERM=sys.argv[1]
+print "Szukamy %s" % TERM
 URL="https://www.compart.com/en/unicode/search?q=%s#characters" % TERM
+print URL
 
 r = requests.get(URL)
 parsed = BeautifulSoup(r.text)
